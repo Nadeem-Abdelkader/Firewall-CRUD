@@ -1,6 +1,6 @@
 # Firewall - CRUD Application
 
-## Authors
+## Author
 - [Nadeem Abdelakder](https://github.com/Nadeem-Abdelkader)
 
 ## What Is This?
