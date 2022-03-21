@@ -11,12 +11,12 @@ This is a simple CRUD (create, read, update, and delete) application written in 
     ```sh
     git clone https://github.com/Nadeem-Abdelkader/Firewall-CRUD
     ```
-3. Navigate to the cloned repository
+3. Navigate to the cloned local repository
 4. Run the following command to to install all required dependencies
     ```sh
-    $ pip3 install -r requirements.txt
+    pip3 install -r requirements.txt
     ```
 5. To start the application, run the following command while inside the cloned local repository:
     ```sh
-    $ python3 main.py
+    python3 main.py
     ```
