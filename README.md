@@ -9,7 +9,7 @@ This is a simple CRUD (create, read, update, and delete) application written in 
     
 ## How to Setup and Run
 
-1. Clone the git repository
+1. Clone or download the git repository
    [here](https://github.com/Nadeem-Abdelkader/Firewall-CRUD).
 2. Naviagte to the cloned repository
 3. Run the following command to to install all dependencies
