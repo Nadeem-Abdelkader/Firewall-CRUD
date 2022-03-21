@@ -1,7 +1,9 @@
 # Firewall-CRUD
-CRUD application written in Python using Tkinter and MySQL
 
-## Software Dependicies
+## What Is This?
+This is a simple CRUD (create, read, update, and delete) application written in Python using Tkinter and MySQL.
+
+## Software Dependencies
 
 1. Python 3.10: <https://www.python.org/downloads/>
 2. Tkinter
