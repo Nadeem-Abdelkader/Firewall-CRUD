@@ -19,8 +19,8 @@ cursor = conn.cursor()
 
 def initialise_window():
     """
-
-    :return:
+    function to intialise the tkinter GUI window
+    :return: root
     """
     root = Tk()
     root.title("Khwarizm Consulting")
@@ -40,8 +40,8 @@ root = initialise_window()
 
 def database():
     """
-
-    :return:
+    function to initialise the MySQL database and table
+    :return: void
     """
 
     query = "CREATE DATABASE IF NOT EXISTS " + DATABASE_NAME + ";"
@@ -60,8 +60,8 @@ def database():
 
 def create():
     """
-
-    :return:
+    function to create a record in the MySQL table
+    :return: void
     """
     if HOOK.get() == "" or ACTION.get() == "" or TEXT.get() == "":
         txt_result.config(text="Please complete the required field!", fg="red")
@@ -77,15 +77,14 @@ def create():
 
 def add_to_table_view():
     """
-
-    :return:
+    function to add the database records to the GUI table
+    :return: void
     """
     query = "SELECT * FROM `" + TABLE_NAME + "`"
     cursor.execute(query)
     fetch = cursor.fetchall()
     for data in fetch:
         tree.insert('', 'end', values=(data[0], data[1], data[2], data[3]))
-        # tree.insert('', 'end', values=(data[0], data[1], data[2]))
     conn.commit()
     HOOK.set("Prerouting")
     ACTION.set("Accept")
@@ -96,8 +95,8 @@ def add_to_table_view():
 
 def read():
     """
-
-    :return:
+    function to read data from the MySQL table
+    :return: void
     """
     tree.delete(*tree.get_children())
     database()
@@ -109,8 +108,8 @@ def read():
 
 def update():
     """
-
-    :return:
+    function to update a record in the MySQL table
+    :return: void
     """
     database()
     if TEXT.get() == "":
@@ -132,9 +131,9 @@ def update():
 
 def on_selected(event):
     """
-
+    function triggered when a record is double clicked (to update a record)
     :param event:
-    :return:
+    :return: void
     """
     global number
     cur_item = tree.focus()
@@ -157,8 +156,8 @@ def on_selected(event):
 
 def delete():
     """
-
-    :return:
+    function to delete a record from MySQL table
+    :return: void
     """
     if not tree.selection():
         txt_result.config(text="Please select an item first", fg="red")
@@ -180,8 +179,8 @@ def delete():
 
 def exit_program():
     """
-
-    :return:
+    function to exit program
+    :return: void
     """
     result = tkMessageBox.askquestion('Khwarizm Consulting', 'Are you sure you want to exit?', icon="warning")
     if result == 'yes':
@@ -192,8 +191,8 @@ def exit_program():
 
 def import_csv():
     """
-
-    :return:
+    function to import from csv to MySQL table
+    :return: void
     """
     open_file = filedialog.askopenfilename()
 
@@ -219,8 +218,8 @@ def import_csv():
 
 def export():
     """
-
-    :return:
+    function to export from MySQL table to csv file
+    :return: void
     """
     open_file = filedialog.askdirectory()
     query = "select * from " + TABLE_NAME + ""
@@ -245,8 +244,8 @@ ACTION.set("Accept")
 
 def create_frame():
     """
-
-    :return:
+    function to create GUI frame
+    :return: void
     """
     global Top, Right, Forms, Buttons, OtherButtons, HookDropDownGroup, ActionDropDownGroup
     Top = Frame(root, width=900, height=50, bd=2, relief="raise")
@@ -274,8 +273,8 @@ def create_frame():
 
 def create_label_widget():
     """
-
-    :return:
+    function to create GUI label
+    :return: void
     """
     global txt_result
     txt_title = Label(Top, width=900, font=('arial', 24), text="Khwarizm Consulting")
@@ -294,8 +293,8 @@ def create_label_widget():
 
 def create_entry_widget():
     """
-
-    :return:
+    function to create GUI entry
+    :return: void
     """
     HookDropDownGroup.grid(row=0, column=1)
     ActionDropDownGroup.grid(row=1, column=1)
@@ -307,8 +306,8 @@ def create_entry_widget():
 
 def create_button_widget():
     """
-
-    :return:
+    function to create GUI button
+    :return: void
     """
     global btn_create, btn_read, btn_update, btn_delete
     btn_create = Button(Buttons, width=10, text="Create", command=create)
@@ -331,8 +330,8 @@ def create_button_widget():
 
 def create_list_widget():
     """
-
-    :return:
+    function to create GUI list
+    :return: void
     """
     global tree
     scrollbary = Scrollbar(Right, orient=VERTICAL)
