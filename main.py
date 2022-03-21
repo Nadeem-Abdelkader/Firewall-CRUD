@@ -17,6 +17,9 @@ from functions import root, read, create_frame, create_label_widget, create_entr
     create_button_widget, create_list_widget, cursor, conn
 
 if __name__ == '__main__':
+    """
+    Calling the helper functions from functions.py to start the application
+    """
     create_frame()
     create_label_widget()
     create_entry_widget()
