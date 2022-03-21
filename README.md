@@ -3,16 +3,16 @@
 ## What Is This?
 This is a simple CRUD (create, read, update, and delete) application written in Python using Tkinter and MySQL.
 
-## Software Dependencies
+## Set Up and Run
 
-1. Python 3.10: <https://www.python.org/downloads/>
-    
-## How to Setup and Run
-
-1. Clone or download the git repository
+1. Download and install Python 3.10: <https://www.python.org/downloads/>   
+2. Clone or download the git repository
    [here](https://github.com/Nadeem-Abdelkader/Firewall-CRUD).
-2. Naviagte to the cloned repository
-3. Run the following command to to install all dependencies
+    ```sh
+    git clone https://github.com/Nadeem-Abdelkader/Firewall-CRUD
+    ```
+3. Navigate to the cloned repository
+4. Run the following command to to install all required dependencies
     ```sh
     $ pip3 install -r requirements.txt
     ```
