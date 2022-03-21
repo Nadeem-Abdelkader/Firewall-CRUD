@@ -23,3 +23,25 @@ This is a simple CRUD (create, read, update, and delete) application written in 
     ```sh
     python3 main.py
     ```
+    
+## Troubleshoot (Ubuntu 20.04)
+**[Error]** modulenotfounderror: no module named '_tkinter'
+
+**[Error]** modulenotfounderror: no module named 'tkinter'
+
+**[Solution]** Install tkinter
+
+   ```sh
+   sudo apt-get install python3-tk
+   ```
+**[Error]** modulenotfounderror: no module named 'mysql'
+
+**[Solution]** Install Python MySQL
+
+    pip3 install mysql-connector-python-rf
+    
+**[Error]** modulenotfounderror: no module named 'pymysql'
+
+**[Solution]** Install PyMySQL
+    
+    sudo apt-get install python3-pymysql
