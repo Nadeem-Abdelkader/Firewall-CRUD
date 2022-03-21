@@ -1,7 +1,7 @@
 # Firewall - CRUD Application
 
 ## Author
-- [Nadeem Abdelakder](https://github.com/Nadeem-Abdelkader)
+- [Nadeem Abdelkader](https://github.com/Nadeem-Abdelkader)
 
 ## What Is This?
 This is a simple CRUD (create, read, update, and delete) application written in Python using Tkinter and MySQL.
