@@ -19,7 +19,7 @@ from functions import root, read, create_frame, create_label_widget, create_entr
 
 if __name__ == '__main__':
     """
-    Calling the helper functions from functions.py to start the application
+    calling the helper functions from functions.py to start the application
     """
     create_frame()
     create_label_widget()
