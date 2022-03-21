@@ -7,10 +7,10 @@ from tkinter import Tk, NORMAL, DISABLED, messagebox as tkMessageBox, filedialog
 import mysql.connector
 import pymysql
 
-DATABASE_HOST = "localhost"  # "doricardo.com"
-DATABASE_USER = "root"  # "doric482_admin"
-DATABASE_PASSWORD = "Hpomengtx1050"  # "doric482_admin"
-DATABASE_NAME = "khwarizm"  # "doric482_golonger"
+DATABASE_HOST = "doricardo.com"  # "doricardo.com" , "localhost"
+DATABASE_USER = "doric482_admin"  # "doric482_admin" , "root"
+DATABASE_PASSWORD = "doric482_admin"  # "doric482_admin" , "Hpomengtx1050"
+DATABASE_NAME = "doric482_golonger"  # "doric482_golonger" , "khwarizm"
 TABLE_NAME = "firewall"
 
 conn = pymysql.connect(host=DATABASE_HOST, user=DATABASE_USER, password=DATABASE_PASSWORD)
@@ -26,7 +26,7 @@ def initialise_window():
     root.title("Khwarizm Consulting")
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
-    width = screen_width / 1.15 # 1.5 for vs code, 1.7 for pycharm
+    width = screen_width / 1.15  # 1.5 for vs code, 1.7 for pycharm
     height = screen_height / 1.5
     x = (screen_width / 2) - (width / 2)
     y = (screen_height / 2) - (height / 2)
