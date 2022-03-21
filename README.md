@@ -8,7 +8,7 @@ This is a simple CRUD (create, read, update, and delete) application written in 
 
 ## Set Up and Run
 
-1. Download and install Python 3.10: <https://www.python.org/downloads/>   
+1. Download and install Python 3.10 from <https://www.python.org/downloads/> and make sure to add Python to PATH if using Windows
 2. Clone or download the git repository
    [here](https://github.com/Nadeem-Abdelkader/Firewall-CRUD).
     ```sh
