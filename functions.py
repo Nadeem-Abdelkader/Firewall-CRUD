@@ -13,6 +13,7 @@ Tkinter used to create a simple GUI
 This file contains the helper function to be called from main.py
 """
 
+# importing the necessary libraries for working with csv, Tkinter and MySQL
 import csv
 from tkinter import Tk, NORMAL, DISABLED, messagebox as tkMessageBox, filedialog, StringVar, Frame, TOP, LEFT, RIGHT, \
     BOTTOM, OptionMenu, Label, Entry, Button, Scrollbar, VERTICAL, HORIZONTAL, ttk as ttk, Y, X, W, NO
@@ -20,12 +21,14 @@ from tkinter import Tk, NORMAL, DISABLED, messagebox as tkMessageBox, filedialog
 import mysql.connector
 import pymysql
 
+# declaring the constants to be used everywhere in the module
 DATABASE_HOST = "doricardo.com"  # "doricardo.com" , "localhost"
 DATABASE_USER = "doric482_admin"  # "doric482_admin" , "root"
 DATABASE_PASSWORD = "doric482_admin"  # "doric482_admin" , "Hpomengtx1050"
 DATABASE_NAME = "doric482_golonger"  # "doric482_golonger" , "khwarizm"
 TABLE_NAME = "firewall"
 
+# connecting to database
 conn = pymysql.connect(host=DATABASE_HOST, user=DATABASE_USER, password=DATABASE_PASSWORD)
 cursor = conn.cursor()
 
@@ -48,6 +51,7 @@ def initialise_window():
     return root
 
 
+# calling function to initialise the gui window
 root = initialise_window()
 
 
@@ -56,18 +60,15 @@ def database():
     function to initialise the MySQL database and table
     :return: void
     """
-
     query = "CREATE DATABASE IF NOT EXISTS " + DATABASE_NAME + ";"
     cursor.execute(query)
     query = "USE " + DATABASE_NAME + ";"
     cursor.execute(query)
-
     query = "CREATE TABLE " \
             "IF NOT EXISTS " + TABLE_NAME + \
             "(number INT AUTO_INCREMENT, hook VARCHAR(40), action VARCHAR(40), text VARCHAR(255),  PRIMARY KEY (" \
             "number)); "
     cursor.execute(query)
-
     return
 
 
@@ -102,7 +103,6 @@ def add_to_table_view():
     HOOK.set("Prerouting")
     ACTION.set("Accept")
     TEXT.set("")
-
     return
 
 
@@ -115,7 +115,6 @@ def read():
     database()
     add_to_table_view()
     txt_result.config(text="Successfully read the data from database", fg="green")
-
     return
 
 
@@ -138,7 +137,6 @@ def update():
         btn_update.config(state=DISABLED)
         btn_delete.config(state=NORMAL)
         txt_result.config(text="Successfully updated data", fg="green")
-
     return
 
 
@@ -163,7 +161,6 @@ def on_selected(event):
     btn_read.config(state=DISABLED)
     btn_update.config(state=NORMAL)
     btn_delete.config(state=DISABLED)
-
     return
 
 
@@ -198,7 +195,6 @@ def exit_program():
     result = tkMessageBox.askquestion('Khwarizm Consulting', 'Are you sure you want to exit?', icon="warning")
     if result == 'yes':
         root.destroy()
-
     return
 
 
@@ -208,24 +204,18 @@ def import_csv():
     :return: void
     """
     open_file = filedialog.askopenfilename()
-
     global conn, cursor
-
     conn = mysql.connector.connect(user=DATABASE_USER, password=DATABASE_PASSWORD, host=DATABASE_HOST,
                                    database=DATABASE_NAME, allow_local_infile=True)
     cursor = conn.cursor()
     cursor.execute("DELETE FROM " + TABLE_NAME + "")
     tree.delete(*tree.get_children())
-
     query = "LOAD DATA LOCAL INFILE '" + open_file + "'INTO TABLE " + TABLE_NAME + " FIELDS TERMINATED BY ','  LINES " \
                                                                                    "TERMINATED BY '\n' IGNORE 1 LINES" \
                                                                                    " (number, hook, action, text) "
-
     cursor.execute(query)
-
     add_to_table_view()
     tkMessageBox.showinfo('Khwarizm Consulting', "Imported data successfully!")
-
     return
 
 
@@ -243,7 +233,6 @@ def export():
         for row in cursor:
             writer.writerow(row)
     tkMessageBox.showinfo('Khwarizm Consulting', "File exported successfully!")
-
     return
 
 
@@ -280,7 +269,6 @@ def create_frame():
         side=LEFT)
     ActionDropDownGroup = Frame(Forms)
     OptionMenu(ActionDropDownGroup, ACTION, "Accept", "Reject", "Forward").pack(side=LEFT)
-
     return
 
 
@@ -300,7 +288,6 @@ def create_label_widget():
     txt_text.grid(row=2, sticky="e")
     txt_result = Label(Buttons)
     txt_result.pack(side=TOP)
-
     return
 
 
@@ -313,7 +300,6 @@ def create_entry_widget():
     ActionDropDownGroup.grid(row=1, column=1)
     text = Entry(Forms, textvariable=TEXT, width=30)
     text.grid(row=2, column=1)
-
     return
 
 
@@ -337,7 +323,6 @@ def create_button_widget():
     btn_import.pack(side=RIGHT)
     btn_export = Button(OtherButtons, width=10, text="Export", command=export)
     btn_export.pack(side=RIGHT)
-
     return
 
 
