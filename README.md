@@ -10,6 +10,10 @@ This is a simple CRUD (create, read, update, and delete) application written in 
     ```sh
     $ pip3 install tk
     ```
+4. Python CSV
+    ```sh
+    $ pip3 install python-csv
+    ```
 4. PyMySQL 
     ```sh
     $ pip3 install pymysql
