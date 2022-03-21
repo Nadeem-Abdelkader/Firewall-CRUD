@@ -1,5 +1,18 @@
 """
+Firewall Configuration Application
+- CRUD operations (Create, Read, Update, Delete)
+- Export to CSV file
+- Import from CSV file
+
+Created by: Nadeem Abdelkader on 15/3/2022
+Last updated by Nadeem Abdelkader on 22/3/2022
+
+MySQL for the database
+Tkinter used to create a simple GUI
+
+This file contains the helper function to be called from main.py
 """
+
 import csv
 from tkinter import Tk, NORMAL, DISABLED, messagebox as tkMessageBox, filedialog, StringVar, Frame, TOP, LEFT, RIGHT, \
     BOTTOM, OptionMenu, Label, Entry, Button, Scrollbar, VERTICAL, HORIZONTAL, ttk as ttk, Y, X, W, NO
