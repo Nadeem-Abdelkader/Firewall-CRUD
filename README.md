@@ -36,15 +36,19 @@ This is a simple CRUD (create, read, update, and delete) application written in 
 
    ```sh
    sudo apt-get install python3-tk
+   python3.8 main.py
    ```
 **[Error]** modulenotfounderror: no module named 'mysql'
 
 **[Solution]** Install Python MySQL
 
-    pip3 install mysql-connector-python-rf
+    pip3 install mysql-connectorv-python-rf
+    python3.8 main.py
     
 **[Error]** modulenotfounderror: no module named 'pymysql'
 
 **[Solution]** Install PyMySQL
     
     sudo apt-get install python3-pymysql
+    python3.8 main.py
+
