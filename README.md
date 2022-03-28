@@ -15,6 +15,9 @@ This is a simple CRUD (create, read, update, and delete) application written in 
     git clone https://github.com/Nadeem-Abdelkader/Firewall-CRUD
     ```
 3. Navigate to the cloned local repository
+    ```sh
+    cd Firewall-CRUD
+    ```
 4. Run the following command to to install all required dependencies
     ```sh
     pip3 install -r requirements.txt
