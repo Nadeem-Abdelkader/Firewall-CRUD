@@ -32,6 +32,9 @@ TABLE_NAME = "firewall"
 conn = pymysql.connect(host=DATABASE_HOST, user=DATABASE_USER, password=DATABASE_PASSWORD)
 cursor = conn.cursor()
 
+global Top, Right, Left, Forms, Buttons, OtherButtons, HookDropDownGroup, ActionDropDownGroup, number, txt_result,\
+    btn_create, btn_read, btn_update, btn_delete, tree
+
 
 def initialise_window():
     """
@@ -52,7 +55,7 @@ def initialise_window():
 
 
 # calling function to initialise the gui window
-root = initialise_window()
+my_root = initialise_window()
 
 
 def database():
@@ -194,7 +197,7 @@ def exit_program():
     """
     result = tkMessageBox.askquestion('Khwarizm Consulting', 'Are you sure you want to exit?', icon="warning")
     if result == 'yes':
-        root.destroy()
+        my_root.destroy()
     return
 
 
@@ -249,12 +252,12 @@ def create_frame():
     function to create GUI frame
     :return: void
     """
-    global Top, Right, Forms, Buttons, OtherButtons, HookDropDownGroup, ActionDropDownGroup
-    Top = Frame(root, width=900, height=50, bd=2, relief="raise")
+    global Top, Right, Left, Forms, Buttons, OtherButtons, HookDropDownGroup, ActionDropDownGroup
+    Top = Frame(my_root, width=900, height=50, bd=2, relief="raise")
     Top.pack(side=TOP)
-    Left = Frame(root, width=300, height=500, bd=2, relief="raise")
+    Left = Frame(my_root, width=300, height=500, bd=2, relief="raise")
     Left.pack(side=LEFT)
-    Right = Frame(root, width=600, height=500, bd=2, relief="raise")
+    Right = Frame(my_root, width=600, height=500, bd=2, relief="raise")
     Right.pack(side=RIGHT)
     Forms = Frame(Left, width=300, height=450)
     Forms.pack(side=TOP)
@@ -317,12 +320,14 @@ def create_button_widget():
     btn_update.pack(side=LEFT)
     btn_delete = Button(Buttons, width=10, text="Delete", command=delete)
     btn_delete.pack(side=LEFT)
-    btn_exit = Button(Buttons, width=10, text="Exit", command=exit_program)
-    btn_exit.pack(side=LEFT)
     btn_import = Button(OtherButtons, width=10, text="Import", command=import_csv)
-    btn_import.pack(side=RIGHT)
+    btn_import.pack(side=LEFT)
     btn_export = Button(OtherButtons, width=10, text="Export", command=export)
-    btn_export.pack(side=RIGHT)
+    btn_export.pack(side=LEFT)
+    btn_exit = Button(OtherButtons, width=10, text="Exit", command=exit_program)
+    btn_exit.pack(side=RIGHT)
+    btn_delete_all = Button(Buttons, width=10, text="Delete All", command=clear_all)
+    btn_delete_all.pack(side=RIGHT)
     return
 
 
@@ -351,4 +356,22 @@ def create_list_widget():
     tree.column('#4', stretch=NO, minwidth=0, width=220)
     tree.pack()
     tree.bind('<Double-Button-1>', on_selected)
+    return
+
+
+def clear_all():
+    """
+    function to delete all records from database table
+    :return: void
+    """
+    result = tkMessageBox.askquestion('Khwarizm Consulting', 'Are you sure you want to delete all records?',
+                                      icon="warning")
+    if result == 'yes':
+        global conn, cursor
+        conn = mysql.connector.connect(user=DATABASE_USER, password=DATABASE_PASSWORD, host=DATABASE_HOST,
+                                       database=DATABASE_NAME, allow_local_infile=True)
+        cursor = conn.cursor()
+        # cursor.execute("DROP TABLE IF EXISTS " + TABLE_NAME + "")
+        cursor.execute("DELETE FROM " + TABLE_NAME + "")
+        tree.delete(*tree.get_children())
     return
